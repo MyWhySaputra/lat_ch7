@@ -6,9 +6,12 @@ const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express')
 const swaggerDefinition = require('./helper/swagger_template.helper')
 
-const { initializeSentry } = require('./lib/Sentry')
+const Sentry = require("@sentry/node");
 
-initializeSentry(process.env.SENTRY_DSN);
+Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+    tracesSampleRate: 1.0,
+});
 
 const port = process.env.PORT || 3000
 
