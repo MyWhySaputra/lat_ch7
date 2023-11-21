@@ -1,6 +1,7 @@
 const { HashPassword, ComparePassword } = require('../helper/hash_pass_helper')
 const { ResponseTemplate } = require('../helper/template.helper')
 const { PrismaClient } = require('@prisma/client')
+const { Sentry } = require('../lib/Sentry')
 
 const prisma = new PrismaClient()
 var jwt = require('jsonwebtoken')
@@ -50,8 +51,8 @@ async function Create(req, res) {
     } catch (error) {
         let resp = ResponseTemplate(null, 'internal server error', error, 500)
         res.status(500).json(resp)
+        Sentry.captureException(error)
         return
-
     }
 }
 
@@ -93,6 +94,7 @@ async function Login(req, res) {
     } catch (error) {
         let resp = ResponseTemplate(null, 'internal server error', error, 500)
         res.status(500).json(resp)
+        Sentry.captureException(error)
         return
     }
 }
