@@ -49,8 +49,8 @@ async function Create(req, res) {
 
     } catch (error) {
         let resp = ResponseTemplate(null, 'internal server error', error, 500)
-        res.status(500).json(resp)
         Sentry.captureException(error)
+        res.status(500).json(resp)
         return
     }
 }
@@ -92,8 +92,8 @@ async function Login(req, res) {
 
     } catch (error) {
         let resp = ResponseTemplate(null, 'internal server error', error, 500)
-        res.status(500).json(resp)
         Sentry.captureException(error)
+        res.status(500).json(resp)
         return
     }
 }
