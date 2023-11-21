@@ -1,7 +1,6 @@
 const { HashPassword, ComparePassword } = require('../helper/hash_pass_helper')
 const { ResponseTemplate } = require('../helper/template.helper')
 const { PrismaClient } = require('@prisma/client')
-const { Sentry } = require('../lib/Sentry')
 
 const prisma = new PrismaClient()
 var jwt = require('jsonwebtoken')
