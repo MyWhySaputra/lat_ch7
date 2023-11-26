@@ -8,12 +8,8 @@ const swaggerDefinition = {
         },
         servers: [
             {
-                url: 'https://latch7-production.up.railway.app/'
+                url: process.env.BASE_URL,
             },
-            {
-                url: 'http://localhost:3000',
-            },
-
         ],
         components: {
             securitySchemes: {
